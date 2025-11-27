@@ -1,0 +1,58 @@
+# ⛔ Arquivos do Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.pyc
+*.pyo
+*.pyd
+
+# ⛔ Ambiente virtual (não subir NUNCA)
+venv/
+env/
+.venv/
+.virtualenv/
+
+# ⛔ Configurações sensíveis
+*.env
+*.secret
+*.key
+
+# ⛔ Logs
+*.log
+
+# ⛔ Arquivos de banco SQLite
+db.sqlite3
+db.sqlite3-journal
+
+# ⛔ Cache do Django
+*.pot
+*.pyc
+*.pyo
+*.pyd
+local_settings.py
+staticfiles/
+static/
+media/
+media/*
+
+# ⛔ Arquivos de migração (opcional: não recomendado remover)
+# Caso queira ignorar migrações iniciais:
+# */migrations/
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# ⛔ Configurações do IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ⛔ Pastas temporárias
+tmp/
+temp/
+
+# ⛔ Arquivos do sistema
+.DS_Store
+Thumbs.db
