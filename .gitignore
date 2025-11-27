@@ -1,58 +1,80 @@
-# ⛔ Arquivos do Python
+# -------------------------
+# Python
+# -------------------------
 __pycache__/
 *.py[cod]
-*.pyo
 *.pyd
+*.pyo
 *.pdb
-*.pyc
-*.pyo
-*.pyd
 
-# ⛔ Ambiente virtual (não subir NUNCA)
+# -------------------------
+# Ambiente virtual
+# -------------------------
 venv/
 env/
 .venv/
 .virtualenv/
 
-# ⛔ Configurações sensíveis
+# -------------------------
+# Configurações sensíveis
+# -------------------------
 *.env
 *.secret
 *.key
+local_settings.py
 
-# ⛔ Logs
+# -------------------------
+# Logs
+# -------------------------
 *.log
 
-# ⛔ Arquivos de banco SQLite
+# -------------------------
+# Banco de dados SQLite
+# -------------------------
 db.sqlite3
 db.sqlite3-journal
 
-# ⛔ Cache do Django
-*.pot
-*.pyc
-*.pyo
-*.pyd
-local_settings.py
+# -------------------------
+# Cache e arquivos estáticos Django
+# -------------------------
 staticfiles/
 static/
 media/
 media/*
 
-# ⛔ Arquivos de migração (opcional: não recomendado remover)
-# Caso queira ignorar migrações iniciais:
+# -------------------------
+# Arquivos de migração (opcional ignorar)
+# -------------------------
 # */migrations/
 # */migrations/*.py
 # !*/migrations/__init__.py
 
-# ⛔ Configurações do IDE
+# -------------------------
+# IDEs e editores
+# -------------------------
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# ⛔ Pastas temporárias
+# -------------------------
+# Pastas temporárias
+# -------------------------
 tmp/
 temp/
 
-# ⛔ Arquivos do sistema
+# -------------------------
+# Arquivos do sistema
+# -------------------------
 .DS_Store
 Thumbs.db
+
+# -------------------------
+# Node.js / Front-end
+# -------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
