@@ -1,6 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -48,12 +48,17 @@ class Category():
 # Class table User
 
 class User(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.CharField(max_length=15)
-    linkedin = models.CharField(max_length=100)
-    github = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = "Usuário"
+        verbose_name_plural = "Usuários"
+
+    id = models.AutoField("ID",primary_key=True)
+    name = models.CharField("Nome",max_length=100)
+    email = models.EmailField("Email")
+    phone = models.CharField("Telefone",max_length=15)
+    linkedin = models.CharField("LinkedIn",max_length=100)
+    github = models.CharField("GitHub",max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -64,15 +69,20 @@ class User(models.Model):
 # Class table Project
 
 class Project(models.Model):
-    id = models.AutoField(primary_key=True)
+
+    class Meta:
+        verbose_name = "Projeto"
+        verbose_name_plural = "Projetos"
+
+    id = models.AutoField("ID",primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
-    description = models.TextField(blank=True, null=True)
-    technologies = models.CharField(max_length=100)
-    category = models.CharField(max_length=100, choices=Category.choices)
-    link_demo = models.CharField(max_length=100, blank=True, null=True)
-    link_github = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='projects', blank=True, null=True)
+    title = models.CharField("Titulo",max_length=100)
+    description = models.TextField("Descrição",blank=True, null=True)
+    technologies = models.CharField("Tecnologias",max_length=100)
+    category = models.CharField("Categoria",max_length=100, choices=Category.choices)
+    link_demo = models.CharField("Link Demonstração",max_length=100, blank=True, null=True)
+    link_github = models.CharField("Link GitHub",max_length=100, blank=True, null=True)
+    image = models.ImageField("Imagem",upload_to='img/projects/%Y/%m/%d', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -83,12 +93,17 @@ class Project(models.Model):
 # Class table Experiment
 
 class Experiment(models.Model):
-    id = models.AutoField(primary_key=True)
+
+    class Meta:
+        verbose_name = "Experiência"
+        verbose_name_plural = "Experiências"
+
+    id = models.AutoField("ID",primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    position = models.CharField(max_length=100)
-    company = models.CharField(max_length=100, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    range_time = models.CharField(max_length=26, blank=True, null=True)
+    position = models.CharField("Posição",max_length=100)
+    company = models.CharField("Empresa",max_length=100, blank=True, null=True)
+    description = models.TextField("Descrição",blank=True, null=True)
+    range_time = models.CharField("Tempo",max_length=26, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -99,12 +114,19 @@ class Experiment(models.Model):
 # Class table Skill
 
 class Skill(models.Model):
-    id = models.AutoField(primary_key=True)
+
+    class Meta:
+        verbose_name = "Habilidade"
+        verbose_name_plural = "Habilidades"
+
+    id = models.AutoField("ID",primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    level = models.CharField(max_length=100, choices=Level.choices, blank=True, null=True)
+    name = models.CharField("Nome",max_length=100)
+    level = models.CharField("Nível",max_length=100, choices=Level.choices, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
+
