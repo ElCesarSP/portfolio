@@ -1,15 +1,95 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>{% block title %}Portifolio{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{% static 'global/img/icons/incons_movei.ico' %}" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+
+    {% block head %}{% endblock %}
 </head>
 <body>
-    {% block content %}
-    <h1>Portfolio</h1>
-    {% endblock %}
+    
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="/" class="logo-link">
+            <img src="{% static 'global/imgs/icons/incons_movei.png' %}" alt="Iso logo" class="navbar-logo-img">
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/sobre/">Sobre</a>
+            <a href="/projetos/">Projetos</a>
+            <a href="/contato/">Contato</a>
+
+            <!-- Tema Toggle -->
+            <button class="thema-toggle" id="themaToggle" aria-label="Toggle thema">
+                <i class="fas fa-sun sun-icon"></i>
+                <i class="fas fa-moon moon-icon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="{% static 'global/imgs/icons/incons_movei.png' %}" alt="Iso logo" class="footer-logo-img">
+                <span>CÉSAR</span>
+            </div>
+            <p>Desenvolvedor Full Stack focado em criar experiências digitais únicas e funcionais.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Links Rápidos</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/sobre/">Sobre</a></li>
+                <li><a href="/projetos/">Projetos</a></li>
+                <li><a href="/contato/">Contato</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h3>Conecte-se</h3>
+            <div class="social-icons">
+                <a href="https://github.com/ElCesarSP" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/in/cesar-santoss/" target="_blank">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+
+                <a href="https://www.instagram.com/elllczar?igsh=cXFzMm84azU1Mmtv" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 César. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    {% block script %}{% endblock %}
 </body>
 </html>
