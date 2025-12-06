@@ -1,7 +1,228 @@
 {% extends 'global/base.html' %}
-{% load static %}
+
+{% block title %}César - Desenvolvedor Full Stack{% endblock %}
 
 {% block content %}
-    <h1>Portfolio Test</h1>
-    <p>Bem-vindo ao meu portfolio!</p>
+<!-- HERO SECTION - VALORANT STYLE -->
+<section class="hero-valorant">
+    <!-- Geometric Background Elements -->
+    <div class="geo-bg">
+        <div class="hex-pattern"></div>
+        <div class="diagonal-lines"></div>
+        <div class="corner-accent top-left"></div>
+        <div class="corner-accent bottom-right"></div>
+    </div>
+    
+    <div class="hero-container">
+        <!-- Left Side - Text Content -->
+        <div class="hero-left">
+            <div class="hero-badge">
+                <span class="badge-line"></span>
+                <span class="badge-text">FULL STACK DEVELOPER</span>
+            </div>
+            
+            <h1 class="hero-main-title">
+                <span class="title-line">CÉSAR</span>
+                <span class="title-accent">DEVELOPER</span>
+            </h1>
+            
+            <p class="hero-tagline">
+                Transformando ideias em código.<br>
+                Criando experiências digitais premium.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Projetos</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Dedicação</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Disponível</span>
+                </div>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="/projetos/" class="btn-tech btn-primary">
+                    <span class="btn-bg"></span>
+                    <span class="btn-text">VER PROJETOS</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contato" class="btn-tech btn-outline">
+                    <span class="btn-text">CONTATO</span>
+                </a>
+            </div>
+            
+            <!-- Social Links - Vertical -->
+            <div class="social-vertical">
+                <a href="https://github.com" target="_blank" class="social-tech">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-tech">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-tech">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <div class="social-line"></div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Visual Element -->
+        <div class="hero-right">
+            <div class="hero-visual">
+                <div class="visual-frame">
+                    <div class="frame-corner tl"></div>
+                    <div class="frame-corner tr"></div>
+                    <div class="frame-corner bl"></div>
+                    <div class="frame-corner br"></div>
+                </div>
+                <div class="visual-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="visual-hex"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <span class="scroll-text">SCROLL</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- SKILLS SECTION - TECH CARDS -->
+<section class="section-tech">
+    <div class="container">
+        <div class="section-header-tech">
+            <span class="section-number">#</span>
+            <h2 class="section-title-tech">HABILIDADES</h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-card-tech">
+                <div class="card-corner"></div>
+                <div class="card-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3 class="card-title">BACKEND</h3>
+                <div class="card-divider"></div>
+                <ul class="card-list">
+                    <li><span class="bullet"></span>Python & Django</li>
+                    <li><span class="bullet"></span>REST APIs</li>
+                    <li><span class="bullet"></span>PostgreSQL</li>
+                    <li><span class="bullet"></span>SQLite</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card-tech">
+                <div class="card-corner"></div>
+                <div class="card-icon">
+                    <i class="fab fa-js"></i>
+                </div>
+                <h3 class="card-title">FRONTEND</h3>
+                <div class="card-divider"></div>
+                <ul class="card-list">
+                    <li><span class="bullet"></span>JavaScript</li>
+                    <li><span class="bullet"></span>HTML5 & CSS3</li>
+                    <li><span class="bullet"></span>Responsive Design</li>
+                    <li><span class="bullet"></span>UI/UX</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card-tech">
+                <div class="card-corner"></div>
+                <div class="card-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="card-title">FERRAMENTAS</h3>
+                <div class="card-divider"></div>
+                <ul class="card-list">
+                    <li><span class="bullet"></span>Git & GitHub</li>
+                    <li><span class="bullet"></span>VS Code</li>
+                    <li><span class="bullet"></span>Linux</li>
+                    <li><span class="bullet"></span>Docker</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-tech">
+    <div class="cta-bg-pattern"></div>
+    <div class="container">
+        <div class="cta-content">
+            <span class="cta-label">PRONTO PARA COMEÇAR?</span>
+            <h2 class="cta-title">Vamos criar algo incrível juntos</h2>
+            <a href="#contato" class="btn-tech btn-primary btn-large">
+                <span class="btn-bg"></span>
+                <span class="btn-text">ENTRAR EM CONTATO</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('themeToggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or default to 'dark'
+const currentTheme = localStorage.getItem('theme') || 'dark';
+htmlElement.setAttribute('data-theme', currentTheme);
+
+// Toggle theme
+themeToggle.addEventListener('click', function() {
+    const theme = htmlElement.getAttribute('data-theme');
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Active link highlighting
+const currentPath = window.location.pathname;
+const navLinks = document.querySelectorAll('.navbar nav a');
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+    }
+});
+
+// Parallax effect for geometric elements
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const hexPattern = document.querySelector('.hex-pattern');
+    const diagonalLines = document.querySelector('.diagonal-lines');
+    
+    if (hexPattern) {
+        hexPattern.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
+    if (diagonalLines) {
+        diagonalLines.style.transform = `translateY(${scrolled * 0.2}px) rotate(-15deg)`;
+    }
+});
+</script>
 {% endblock %}
