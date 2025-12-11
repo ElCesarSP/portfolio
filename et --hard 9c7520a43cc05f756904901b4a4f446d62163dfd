@@ -1,0 +1,106 @@
+[33mcommit d11ebeeb4373d6b8e1552d4838680b6f105a020a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeat_pages[m[33m)[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Thu Dec 11 20:44:23 2025 -0300
+
+    reafactor(base/css/, pages/, )Atualizações nos arquivos modificados
+
+[33mcommit 9c7520a43cc05f756904901b4a4f446d62163dfd[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: ce13fc8 45c37eb
+Author: César Santos <132622537+ElCesarSP@users.noreply.github.com>
+Date:   Sat Dec 6 11:55:27 2025 -0300
+
+    Merge pull request #3 from ElCesarSP/styles
+    
+    Styles
+
+[33mcommit 45c37eba832b7792da4aee0d8bdddd722b07b682[m[33m ([m[1;31morigin/styles[m[33m, [m[1;32mstyles[m[33m)[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Sat Dec 6 11:51:24 2025 -0300
+
+    feat(base/imgs/pgn):Creating a new folder for images
+
+[33mcommit e758cf760938a6641bb865c4a0db0b601167a50f[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Sat Dec 6 11:49:44 2025 -0300
+
+    remove(base/style,html):Removing unnecessary files
+
+[33mcommit e44f327e3c431246ea869ad358c78c4db1059ab6[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Sat Dec 6 11:47:11 2025 -0300
+
+    refactor(base portfoly):Modifications to the templates and views of the portfolio project.
+
+[33mcommit ce13fc877da2e3ab925d6dd3e05815b68b440fd4[m
+Merge: 325652c fedc0e9
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Wed Dec 3 16:53:50 2025 -0300
+
+    Removendo arquivos .pyc e adicionando .gitignore
+
+[33mcommit 325652c001b66da41a63ac92c72936b5fcc14bbf[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Wed Dec 3 16:52:39 2025 -0300
+
+    Removendo arquivos .pyc do repositório e adicionando .gitignore
+
+[33mcommit fedc0e94c513204719a72781a35a70366a74ddb0[m
+Merge: 10868f1 22db299
+Author: César Santos <132622537+ElCesarSP@users.noreply.github.com>
+Date:   Wed Dec 3 16:48:27 2025 -0300
+
+    Merge pull request #2 from ElCesarSP/back_protf
+    
+    Feat(base/base.html): Creat the HTML home page
+
+[33mcommit 22db2994ff689eb05365b1749dc790a7d6fb490b[m[33m ([m[1;31morigin/back_protf[m[33m, [m[1;32mback_protf[m[33m)[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Wed Dec 3 16:30:28 2025 -0300
+
+    Feat(base/base.html): Creat the HTML home page
+
+[33mcommit 10868f1d4633b1876409c4291df41ee4724c14bd[m
+Merge: 1d3598b de094b6
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Thu Nov 27 19:27:31 2025 -0300
+
+    Remove .pyc files and fix merge
+
+[33mcommit 1d3598bf07c0b4409f3532d5536359431275c6b5[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Thu Nov 27 19:25:35 2025 -0300
+
+    Erro
+
+[33mcommit de094b6e9b80c796f4648f0c60e585e949574c0a[m
+Merge: 38f359f e7b3c31
+Author: César Santos <132622537+ElCesarSP@users.noreply.github.com>
+Date:   Thu Nov 27 19:13:09 2025 -0300
+
+    Merge pull request #1 from ElCesarSP/creat_models_database
+    
+    feat(portfoly/models): Create table do portfoly
+
+[33mcommit e7b3c311e0d5d21bbbc42be1a65f6bad8ebfa015[m[33m ([m[1;31morigin/creat_models_database[m[33m)[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Thu Nov 27 19:12:09 2025 -0300
+
+    feat(portfoly/models): Create table do portfoly
+
+[33mcommit 38f359feae5816baa47c7bc01a660154b366400d[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Thu Nov 27 14:12:19 2025 -0300
+
+    feat: Create app portfoly
+
+[33mcommit 479669677ee86adad064f41629eb5ec2128e6f95[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Thu Nov 27 13:44:55 2025 -0300
+
+    Removendo arquivos que não devem estar no repositório
+
+[33mcommit e7cdc28f87e2051354771ed059abd79ab66fce61[m
+Author: ElCesarSP <cs.loko0125@gmail.com>
+Date:   Thu Nov 27 13:33:23 2025 -0300
+
+    Feact: my init portfoly
