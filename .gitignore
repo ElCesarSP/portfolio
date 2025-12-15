@@ -18,6 +18,7 @@ env/
 # -------------------------
 # Configurações sensíveis
 # -------------------------
+
 *.env
 *.secret
 *.key
@@ -78,3 +79,4 @@ yarn-debug.log*
 yarn-error.log*
 dist/
 build/
+setup/settings.py

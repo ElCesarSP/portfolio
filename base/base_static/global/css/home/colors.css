@@ -1,0 +1,101 @@
+/**
+ * =================================================
+ * Colors Styles - Variables, Reset & Base
+ * =================================================
+ */
+
+/* === CSS VARIABLES === */
+:root {
+    /* Colors - Dark Purple + Red Accents Palette (DARK THEME) */
+    --color-black-deep: #050505;
+    --color-black-soft: #0a0a0a;
+    --color-black-light: #1a1a1a;
+    
+    /* Dark Purple Tones */
+    --color-purple-primary: #6B2C91;      /* Deep Purple */
+    --color-purple-dark: #4A1D66;         /* Darker Purple */
+    --color-purple-bright: #8B3FB8;       /* Brighter Purple */
+    --color-purple-light: #9D5BB5;        /* Light Purple */
+    --color-purple-pale: #B88FCC;         /* Pale Purple */
+    
+    /* Red Accent Tones */
+    --color-red-primary: #E63946;         /* Vibrant Red */
+    --color-red-dark: #C1121F;            /* Dark Red */
+    --color-red-bright: #FF4757;          /* Bright Red */
+    --color-red-glow: #FF6B7A;            /* Red Glow */
+    
+    /* White Tones */
+    --color-white: #FFFFFF;
+    --color-white-soft: #EAEAEA;
+    --color-white-dim: #B8B8B8;
+    
+    /* Gradients */
+    --gradient-purple: linear-gradient(135deg, #6B2C91 0%, #4A1D66 100%);
+    --gradient-purple-glow: linear-gradient(135deg, #8B3FB8 0%, #6B2C91 50%, #4A1D66 100%);
+    --gradient-red: linear-gradient(135deg, #E63946 0%, #C1121F 100%);
+    --gradient-purple-red: linear-gradient(135deg, #6B2C91 0%, #E63946 100%);
+    --gradient-dark: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 40px;
+    --spacing-xl: 60px;
+    --spacing-2xl: 80px;
+    
+    /* Typography */
+    --font-primary: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: "Poppins", "Montserrat", sans-serif;
+    
+    /* Shadows */
+    --shadow-purple-sm: 0 0 20px rgba(107, 44, 145, 0.2);
+    --shadow-purple-md: 0 0 40px rgba(107, 44, 145, 0.3);
+    --shadow-purple-lg: 0 0 60px rgba(107, 44, 145, 0.4);
+    --shadow-red-sm: 0 0 20px rgba(230, 57, 70, 0.2);
+    --shadow-red-md: 0 0 40px rgba(230, 57, 70, 0.3);
+    --shadow-red-lg: 0 0 60px rgba(230, 57, 70, 0.4);
+    --shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.5);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.5s ease;
+    --transition-slow: 1s ease;
+}
+
+/* === RESET & BASE === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--color-black-deep);
+    color: var(--color-white-soft);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-white);
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+p {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--color-white-dim);
+}

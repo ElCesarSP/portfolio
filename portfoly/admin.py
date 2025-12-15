@@ -5,29 +5,63 @@ from . import models
 
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("id", "nome", "email_formatado", "telefone", "linkedin", "github", "created_at")
+    list_display = ("id", "name", "email", "password", "is_staff", "is_active", "created_at")
     ordering = ("-id",)
-    list_filter = ["name"]
-    search_fields = ["name", "email", "phone"]
+    list_filter = ["name", "email", "is_staff", "is_active"]
+    search_fields = ["name", "email", "is_staff", "is_active"]
     list_per_page = 20
     list_max_show_all = 200
-    list_display_links = ["id", "nome",]
+    list_display_links = ["id", "name",]
 
     def id(self, obj):
         return obj.id
     id.short_description = "ID"
 
-    def nome(self, obj):
+    def name(self, obj):
         return obj.name
-    nome.short_description = "Nome"
+    name.short_description = "Nome"
 
-    def email_formatado(self, obj):
+    def email(self, obj):
         return obj.email
-    email_formatado.short_description = "E-mail"
+    email.short_description = "Email"
 
-    def telefone(self, obj):
+    def password(self, obj):
+        return obj.password
+    password.short_description = "Senha"
+
+    def is_staff(self, obj):
+        return obj.is_staff
+    is_staff.short_description = "Staff"
+
+    def is_active(self, obj):
+        return obj.is_active
+    is_active.short_description = "Ativo"
+
+    def created_at(self, obj):
+        return obj.created_at
+    created_at.short_description = "Data de Criação"    
+
+@admin.register(models.UserDetails)
+class UserDetailsAdmin(admin.ModelAdmin):
+    list_display = ("id", "user_id", "phone", "linkedin", "github", "created_at")
+    ordering = ("-id",)
+    list_filter = ["user_id"]
+    search_fields = ["user_id", "phone", "linkedin", "github"]
+    list_per_page = 20
+    list_max_show_all = 200
+    list_display_links = ["id", "user_id",]
+
+    def id(self, obj):
+        return obj.id
+    id.short_description = "ID"
+
+    def user_id(self, obj):
+        return obj.user_id
+    user_id.short_description = "Usuário"
+
+    def phone(self, obj):
         return obj.phone
-    telefone.short_description = "Telefone"
+    phone.short_description = "Telefone"
 
     def linkedin(self, obj):
         return obj.linkedin
@@ -46,7 +80,7 @@ class UserAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ("id", "title", "user_id", "category", "technologies","created_at")
     ordering = ("-id",)
-    list_filter = ["created_at"]
+    list_filter = ["user_id", "category", "technologies"]
     search_fields = ["title", "category", "technologies"]
     list_per_page = 20
     list_max_show_all = 200
@@ -81,7 +115,7 @@ class ProjectAdmin(admin.ModelAdmin):
 class ExperimentAdmin(admin.ModelAdmin):
     list_display = ("id", "position", "company", "description", "range_time", "created_at")
     ordering = ("-id",)
-    list_filter = ["created_at"]
+    list_filter = ["user_id", "position", "company", "range_time"]
     search_fields = ["position", "company", "range_time"]
     list_per_page = 20
     list_max_show_all = 200
@@ -115,7 +149,7 @@ class ExperimentAdmin(admin.ModelAdmin):
 class SkillAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "level", "created_at")
     ordering = ("-id",)
-    list_filter = ["created_at"]
+    list_filter = ["user_id", "name", "level"]
     search_fields = ["name", "level"]
     list_per_page = 20
     list_max_show_all = 200
@@ -136,4 +170,67 @@ class SkillAdmin(admin.ModelAdmin):
     def created_at(self, obj):
         return obj.created_at
     created_at.short_description = "Data de Criação"
+
+
+@admin.register(models.Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", "email", "subject", "read", "created_at")
+    ordering = ("-id",)
+    list_filter = ["read"]
+    search_fields = ["name", "email", "subject", "message"]
+    list_per_page = 20
+    list_max_show_all = 200
+    list_display_links = ["id", "name"]
+
+    def id(self, obj):
+        return obj.id
+    id.short_description = "ID"
+
+    def name(self, obj):
+        return obj.name
+    name.short_description = "Nome"
+
+    def email(self, obj):
+        return obj.email
+    email.short_description = "Email"
+
+    def subject(self, obj):
+        return obj.subject
+    subject.short_description = "Assunto"
+
+    def read(self, obj):
+        return obj.read
+    read.short_description = "Lido"
+
+    def created_at(self, obj):
+        return obj.created_at
+    created_at.short_description = "Data"
+
+
+@admin.register(models.AuthToken)
+class AuthTokenAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "token_preview", "is_active", "remember_me", "created_at", "expires_at")
+    ordering = ("-id",)
+    list_filter = ["is_active", "remember_me"]
+    search_fields = ["user__name", "user__email"]
+    list_per_page = 20
+    list_display_links = ["id", "user"]
+
+    def token_preview(self, obj):
+        return f"{obj.token[:10]}..."
+    token_preview.short_description = "Token"
+
+
+@admin.register(models.PasswordResetToken)
+class PasswordResetTokenAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "token_preview", "used", "created_at", "expires_at")
+    ordering = ("-id",)
+    list_filter = ["used"]
+    search_fields = ["user__name", "user__email"]
+    list_per_page = 20
+    list_display_links = ["id", "user"]
+
+    def token_preview(self, obj):
+        return f"{obj.token[:10]}..."
+    token_preview.short_description = "Token"
 

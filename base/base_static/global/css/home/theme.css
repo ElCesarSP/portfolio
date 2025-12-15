@@ -1,0 +1,101 @@
+/* ============================================
+   THEME STYLES - Light/Dark Theme
+   ============================================ */
+
+/* === LIGHT THEME === */
+[data-theme="light"] {
+    /* Light Background Colors */
+    --color-black-deep: #F5F5F5;
+    --color-black-soft: #FFFFFF;
+    --color-black-light: #E8E8E8;
+    
+    /* Purple Tones (Adjusted for light theme) */
+    --color-purple-primary: #6B2C91;
+    --color-purple-dark: #4A1D66;
+    --color-purple-bright: #8B3FB8;
+    --color-purple-light: #7A3DA3;
+    --color-purple-pale: #9D5BB5;
+    
+    /* Red Accent Tones (Same) */
+    --color-red-primary: #E63946;
+    --color-red-dark: #C1121F;
+    --color-red-bright: #FF4757;
+    --color-red-glow: #FF6B7A;
+    
+    /* Dark Text Colors */
+    --color-white: #1a1a1a;
+    --color-white-soft: #2a2a2a;
+    --color-white-dim: #4a4a4a;
+    
+    /* Gradients (Adjusted) */
+    --gradient-purple: linear-gradient(135deg, #6B2C91 0%, #4A1D66 100%);
+    --gradient-purple-glow: linear-gradient(135deg, #8B3FB8 0%, #6B2C91 50%, #4A1D66 100%);
+    --gradient-red: linear-gradient(135deg, #E63946 0%, #C1121F 100%);
+    --gradient-purple-red: linear-gradient(135deg, #6B2C91 0%, #E63946 100%);
+    --gradient-dark: linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%);
+    
+    /* Shadows (Lighter) */
+    --shadow-purple-sm: 0 0 20px rgba(107, 44, 145, 0.15);
+    --shadow-purple-md: 0 0 40px rgba(107, 44, 145, 0.2);
+    --shadow-purple-lg: 0 0 60px rgba(107, 44, 145, 0.25);
+    --shadow-red-sm: 0 0 20px rgba(230, 57, 70, 0.15);
+    --shadow-red-md: 0 0 40px rgba(230, 57, 70, 0.2);
+    --shadow-red-lg: 0 0 60px rgba(230, 57, 70, 0.25);
+    --shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: rgba(107, 44, 145, 0.15);
+    border: 2px solid rgba(107, 44, 145, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+    margin-left: 20px;
+}
+
+.theme-toggle:hover {
+    background: rgba(107, 44, 145, 0.25);
+    border-color: var(--color-purple-primary);
+    transform: rotate(15deg);
+}
+
+.theme-toggle i {
+    position: absolute;
+    font-size: 1.125rem;
+    transition: var(--transition-normal);
+}
+
+.sun-icon {
+    color: var(--color-red-primary);
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+}
+
+.moon-icon {
+    color: var(--color-purple-bright);
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* Light theme icon states */
+[data-theme="light"] .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+[data-theme="light"] .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+}
+
+[data-theme="light"] .theme-toggle {
+    background: rgba(107, 44, 145, 0.1);
+    border-color: rgba(107, 44, 145, 0.2);
+}
