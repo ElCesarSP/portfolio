@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,6 +139,14 @@ MEDIA_ROOT = BASE_DIR / "media" # upload
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# OpenAI via Hugging Face Configuration (gratuito)
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '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')
+OPENAI_MODEL = 'openai/gpt-oss-20b:groq'  # Modelo gratuito via Hugging Face
+
+# Chatbot Settings
+CHATBOT_MAX_HISTORY = 10  # Últimas 10 mensagens para contexto
+CHATBOT_SESSION_TIMEOUT = 3600  # 1 hora em segundos
 
 try:
     from .local_settings import *
