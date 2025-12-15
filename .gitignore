@@ -79,3 +79,4 @@ yarn-debug.log*
 yarn-error.log*
 dist/
 build/
+setup/settings.py
