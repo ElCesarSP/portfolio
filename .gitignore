@@ -18,6 +18,7 @@ env/
 # -------------------------
 # Configurações sensíveis
 # -------------------------
+
 *.env
 *.secret
 *.key

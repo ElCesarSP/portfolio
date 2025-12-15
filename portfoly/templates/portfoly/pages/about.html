@@ -1,0 +1,200 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block title %}Sobre - César{% endblock %}
+
+{% block content %}
+<!-- HERO SECTION - ABOUT PAGE -->
+<section class="hero-valorant">
+    <!-- Geometric Background Elements -->
+    <div class="geo-bg">
+        <div class="hex-pattern"></div>
+        <div class="diagonal-lines"></div>
+        <div class="corner-accent top-left"></div>
+        <div class="corner-accent bottom-right"></div>
+    </div>
+    
+    <div class="hero-container">
+        <!-- Left Side - Text Content -->
+        <div class="hero-left">
+            <div class="hero-badge">
+                <span class="badge-line"></span>
+                <span class="badge-text">SOBRE MIM</span>
+            </div>
+            
+            <h1 class="hero-main-title">
+                <span class="title-line">CÉSAR</span>
+                <span class="title-accent">DEVELOPER</span>
+            </h1>
+            
+            <p class="hero-tagline">
+                Apaixonado por tecnologia e inovação.<br>
+                Criando soluções que fazem a diferença.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">2+</span>
+                    <span class="stat-label">Anos de experiência</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Projetos</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Aprendizados</span>
+                </div>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="/projetos/" class="btn-tech btn-primary">
+                    <span class="btn-bg"></span>
+                    <span class="btn-text">VER PROJETOS</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contato" class="btn-tech btn-outline">
+                    <span class="btn-text">CONTATO</span>
+                </a>
+            </div>
+            
+            <!-- Social Links - Vertical -->
+            <div class="social-vertical">
+                <a href="https://github.com/ElCesarSP" target="_blank" class="social-tech">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cesar-santoss/" target="_blank" class="social-tech">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=5577981362007&text=Olá! Sou César Desenvolvedor! Seja bem-vindo ao meu WhatsApp, como poderia ajudar?"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Entrar em contato pelo WhatsApp"
+                    class="social-tech">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <div class="social-line"></div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Visual Element -->
+        <div class="hero-right">
+            <div class="hero-visual">
+                <div class="visual-frame">
+                    <div class="frame-corner tl"></div>
+                    <div class="frame-corner tr"></div>
+                    <div class="frame-corner bl"></div>
+                    <div class="frame-corner br"></div>
+                </div>
+                <div class="visual-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="visual-hex"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <span class="scroll-text">SCROLL</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ABOUT CONTENT SECTION -->
+<section class="section-tech">
+    <div class="container">
+        <div class="section-header-tech">
+            <span class="section-number">#</span>
+            <h2 class="section-title-tech">MINHA JORNADA</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <!-- Carousel Container for Experiences -->
+        <div class="carousel-container experiences-carousel">
+            <div class="carousel-wrapper">
+                <div class="carousel-track no-carousel">
+                    <div class="carousel-item">
+                        <div class="skill-card-tech">
+                            <div class="card-corner"></div>
+                            <div class="card-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="card-title">FORMAÇÃO</h3>
+                            <div class="card-divider"></div>
+                            <ul class="card-list">
+                                <li><span class="bullet"></span>Análise e Desenvolvimento de Sistemas</li>
+                                <li><span class="bullet"></span>Certificações em Python</li>
+                                <li><span class="bullet"></span>Cursos de Web Development</li>
+                                <li><span class="bullet"></span>Aprendizado Contínuo</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="skill-card-tech">
+                            <div class="card-corner"></div>
+                            <div class="card-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3 class="card-title">EXPERIÊNCIA</h3>
+                            <div class="card-divider"></div>
+                            <ul class="card-list">
+                                <li><span class="bullet"></span>Desenvolvimento Full Stack</li>
+                                <li><span class="bullet"></span>Projetos Pessoais</li>
+                                <li><span class="bullet"></span>Freelance</li>
+                                <li><span class="bullet"></span>Open Source</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="skill-card-tech">
+                            <div class="card-corner"></div>
+                            <div class="card-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3 class="card-title">Profissionalismo</h3>
+                            <div class="card-divider"></div>
+                            <ul class="card-list">
+                                <li><span class="bullet"></span>Clean Code</li>
+                    <li><span class="bullet"></span>UI/UX Design</li>
+                    <li><span class="bullet"></span>Novas Tecnologias</li>
+                    <li><span class="bullet"></span>Resolver Problemas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PHILOSOPHY SECTION -->
+<section class="cta-tech">
+    <div class="cta-bg-pattern"></div>
+    <div class="container">
+        <div class="cta-content">
+            <span class="cta-label">MINHA FILOSOFIA</span>
+            <h2 class="cta-title">Código limpo, design premium, resultados excepcionais</h2>
+            <p style="color: var(--color-white-dim); max-width: 700px; margin: 0 auto 40px; line-height: 1.8;">
+                Acredito que a tecnologia deve ser uma ferramenta para transformar ideias em realidade. 
+                Cada linha de código é uma oportunidade de criar algo extraordinário. 
+                Meu compromisso é entregar soluções que não apenas funcionam, mas que encantam.
+            </p>
+            <a href="#contato" class="btn-tech btn-primary btn-large">
+                <span class="btn-bg"></span>
+                <span class="btn-text">VAMOS CONVERSAR</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<!-- Parallax effect específico da página sobre -->
+<script src="{% static 'global/js/pages/home-parallax.js' %}"></script>
+{% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'global/base.html' %}
+{% load static %}
 
 {% block title %}César - Desenvolvedor Full Stack{% endblock %}
 
@@ -61,14 +62,18 @@
             
             <!-- Social Links - Vertical -->
             <div class="social-vertical">
-                <a href="https://github.com" target="_blank" class="social-tech">
+                <a href="https://github.com/ElCesarSP" target="_blank" class="social-tech">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://linkedin.com" target="_blank" class="social-tech">
+                <a href="https://www.linkedin.com/in/cesar-santoss/" target="_blank" class="social-tech">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://twitter.com" target="_blank" class="social-tech">
-                    <i class="fab fa-twitter"></i>
+                <a href="https://api.whatsapp.com/send?phone=5577981362007&text=Olá! Sou César Desenvolvedor! Seja bem-vindo ao meu WhatsApp, como poderia ajudar?"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Entrar em contato pelo WhatsApp"
+                    class="social-tech">
+                    <i class="fab fa-whatsapp"></i>
                 </a>
                 <div class="social-line"></div>
             </div>
@@ -174,55 +179,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('themeToggle');
-const htmlElement = document.documentElement;
-
-// Check for saved theme preference or default to 'dark'
-const currentTheme = localStorage.getItem('theme') || 'dark';
-htmlElement.setAttribute('data-theme', currentTheme);
-
-// Toggle theme
-themeToggle.addEventListener('click', function() {
-    const theme = htmlElement.getAttribute('data-theme');
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Active link highlighting
-const currentPath = window.location.pathname;
-const navLinks = document.querySelectorAll('.navbar nav a');
-navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPath) {
-        link.classList.add('active');
-    }
-});
-
-// Parallax effect for geometric elements
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const hexPattern = document.querySelector('.hex-pattern');
-    const diagonalLines = document.querySelector('.diagonal-lines');
-    
-    if (hexPattern) {
-        hexPattern.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
-    if (diagonalLines) {
-        diagonalLines.style.transform = `translateY(${scrolled * 0.2}px) rotate(-15deg)`;
-    }
-});
-</script>
+<!-- Parallax effect específico da página sobre -->
+<script src="{% static 'global/js/pages/home-parallax.js' %}"></script>
 {% endblock %}
