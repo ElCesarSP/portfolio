@@ -1,0 +1,167 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block title %}Projetos - César{% endblock  %}
+
+{% block content %}
+<!-- HERO SECTION - PROJECTS PAGE -->
+<section class="hero-valorant">
+    <!-- Geometric Backgraund ELements -->
+    <div class="geo-bg">
+        <div class="hex-pattern"></div>
+        <div class="diagonal-lines"></div>
+        <div class="corner-accent top-left"></div>
+        <div class="corner-accent bottom-right"></div>
+    </div>
+
+    <div class="hero-container" style="grid-template-columns: 1fr; text-align: center; padding: 120px 60px 80px;">
+        <div class="hero-left"style="max-width: 900px; margin: 0 auto;">
+            <div class="hero-badge" style="justify-content: center;">
+                <span class="badge-line"></span>
+                <span class="badge-text">PORTFÓLIO</span>
+                <span class="badge-line"></span>
+            </div>
+
+            <h1 class="hero-main-title">
+                <span class="title-line">PROJETOS</span>
+                <span class="title-line">REALIZADOS</span>
+            </h1>
+
+            <p class="hero-tagline" style="margin: 0 auto 30px;">
+                Cada projeto é uma história de desafios superados,<br>
+                aprendizado contínuo e soluções inovadoras.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS GRID SECTION -->
+<section class="section-tech">
+    <div class="container">
+        <div class="section-header-tech">
+            <span class="section-number">#</span>
+            <h2 class="section-title-tech">TODOS OS PROJETOS</h2>
+            <div class="section-line"></div>
+        </div>
+
+        {% if projects %}
+        <!-- Carousel Container -->
+        <div class="carousel-container projects-carousel">
+            {% if projects|length > 3 %}
+            <!-- Autoplay Button -->
+            <button class="carousel-autoplay" aria-label="Toggle autoplay">
+                <i class="fas fa-pause"></i>
+            </button>
+            {% endif %}
+
+            <div class="carousel-wrapper">
+                <br>
+                <br>
+                <div class="carousel-track" {% if projects|length <= 3 %}no-carousel{% endif %} >
+                    {% for project in projects %}
+                    <div class="carousel-item">
+                        <div class="project-card-tech">
+                            <div class="card-corner"></div>
+
+                            <!-- Project image -->
+                            <div class="project-image">
+                                {% if project.image %}
+                                    <img src="{{ project.image.url}}" alt="{{ project.title}}">
+                                {% else %}
+                                    <div class="project-placeholder">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                {% endif %}
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        {% if project.link_demo %}
+                                        <a href="{{ project.link_demo}}" target="_blank" class="project-link-btn" title="Ver Demo">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        {% endif %}
+                                        {% if project.link_github %}
+                                        <a href="{{ project.link_github }}"target="_blank" class="project-link-btn" title="Ver no GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Content -->
+                            <div class="project-content">
+                                <div class="project-category">
+                                    <i class="fasfa-tag"></i>
+                                    <span>{{ project.category }}</span>
+                                </div>
+
+                                <h3 class="project-title">{{ project.title}}</h3>
+
+                                <p class="project-description">
+                                    {{ project.description|default:"Projeto desenvolvido com as melhores práticas e tecnologias modernas."}}
+                                </p>
+
+                                <div class="project-tech">
+                                    <i class="fasfa-tools"></i>
+                                    <span>{{ project.technologia }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            {% if project|length > 3 %}
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <button class="carousel-btn carousel-prev" aria-label="Previous">
+                    <i class="fas fa-chavron-left"></i>
+                </button>
+
+                <div class="carousel-indicators"></div>
+
+                <button class="carousel-btn carousel-next" aria-label="Next">
+                    <i class="fas fa-chavron-right"></i>
+                </button>
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <!-- Empty State -->
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="fas fa-folder-open"></i>
+            </div>
+            <h3 class="empty-title">Nenhum projeto encontrado</h3>
+            <p class="empty-text">
+                Novos projetos incríveis estão sendo desenvolvidos.<br>
+                Em breve você verá trabalhos extraordinários aqui!
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-tech">
+    <div class="cta-bg-pattern"></div>
+    <div class="container">
+        <div class="cta-content">
+            <span class="cta-label">TEM UM PROJETO EM MENTE?</span>
+            <h2 class="cta-title">Vamos transformar sua ideia em realidade</h2>
+            <a href="/contato/" class="btn-tech btn-primary btn-large">
+                <span class="btn-bg"></span>
+                <span class="btn-text">INICIAR PROJETO</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock  %}
+
+{% block scripts %}
+<!-- Project cards effects específico da página de projetos -->
+<script src="{% static 'global/js/pages/projects-effects.js' %}"></script>
+{% endblock %}
