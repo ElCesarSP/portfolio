@@ -11,8 +11,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -141,7 +142,7 @@ MEDIA_ROOT = BASE_DIR / "media" # upload
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # OpenAI via Hugging Face Configuration (gratuito)
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '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')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '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') 
 OPENAI_MODEL = 'openai/gpt-oss-20b:groq'  # Modelo gratuito via Hugging Face
 
 # Chatbot Settings
