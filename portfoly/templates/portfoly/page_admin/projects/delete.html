@@ -1,0 +1,43 @@
+{% extends 'portfoly/page_admin/base_admin.html' %}
+
+{% block title %}Deletar Projeto{% endblock %}
+{% block page_title %}Deletar Projeto{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2 class="admin-page-title">Deletar Projeto</h2>
+    <a href="{% url 'portfoly:admin_projects_list' %}" class="admin-btn admin-btn-secondary">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+</div>
+
+<div class="admin-card">
+    <div style="text-align: center; padding: 2rem;">
+        <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: var(--admin-warning); margin-bottom: 1.5rem;"></i>
+        
+        <h3 style="margin-bottom: 1rem;">Tem certeza que deseja deletar este projeto?</h3>
+        
+        <div style="background: var(--admin-bg-tertiary); padding: 1.5rem; border-radius: var(--admin-border-radius-sm); margin: 2rem auto; max-width: 500px; text-align: left;">
+            <p style="margin-bottom: 0.5rem;"><strong>Título:</strong> {{ project.title }}</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Categoria:</strong> {{ project.category }}</p>
+            <p style="margin-bottom: 0;"><strong>Tecnologias:</strong> {{ project.technologies }}</p>
+        </div>
+        
+        <p style="color: var(--admin-error); margin-bottom: 2rem;">
+            <i class="fas fa-info-circle"></i> Esta ação não pode ser desfeita!
+        </p>
+        
+        <form method="post" style="display: inline-block;">
+            {% csrf_token %}
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button type="submit" class="admin-btn admin-btn-danger">
+                    <i class="fas fa-trash"></i> Sim, Deletar
+                </button>
+                <a href="{% url 'portfoly:admin_projects_list' %}" class="admin-btn admin-btn-secondary">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

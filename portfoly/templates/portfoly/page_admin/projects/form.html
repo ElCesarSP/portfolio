@@ -1,0 +1,89 @@
+{% extends 'portfoly/page_admin/base_admin.html' %}
+
+{% block title %}{{ action }} Projeto{% endblock %}
+{% block page_title %}{{ action }} Projeto{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2 class="admin-page-title">{{ action }} Projeto</h2>
+    <a href="{% url 'portfoly:admin_projects_list' %}" class="admin-btn admin-btn-secondary">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+</div>
+
+<div class="admin-card">
+    <form method="post" enctype="multipart/form-data" class="admin-form">
+        {% csrf_token %}
+        
+        <div class="admin-form-group">
+            <label for="{{ form.title.id_for_label }}" class="admin-form-label">
+                Título *
+            </label>
+            {{ form.title }}
+        </div>
+        
+        <div class="admin-form-group">
+            <label for="{{ form.description.id_for_label }}" class="admin-form-label">
+                Descrição
+            </label>
+            {{ form.description }}
+        </div>
+        
+        <div class="admin-grid admin-grid-2">
+            <div class="admin-form-group">
+                <label for="{{ form.technologies.id_for_label }}" class="admin-form-label">
+                    Tecnologias *
+                </label>
+                {{ form.technologies }}
+                <small class="admin-form-help">Separe por vírgula (ex: Python, Django, JavaScript)</small>
+            </div>
+            
+            <div class="admin-form-group">
+                <label for="{{ form.category.id_for_label }}" class="admin-form-label">
+                    Categoria *
+                </label>
+                {{ form.category }}
+            </div>
+        </div>
+        
+        <div class="admin-grid admin-grid-2">
+            <div class="admin-form-group">
+                <label for="{{ form.link_demo.id_for_label }}" class="admin-form-label">
+                    Link de Demonstração
+                </label>
+                {{ form.link_demo }}
+            </div>
+            
+            <div class="admin-form-group">
+                <label for="{{ form.link_github.id_for_label }}" class="admin-form-label">
+                    Link do GitHub
+                </label>
+                {{ form.link_github }}
+            </div>
+        </div>
+        
+        <div class="admin-form-group">
+            <label for="{{ form.image.id_for_label }}" class="admin-form-label">
+                Imagem do Projeto
+            </label>
+            <div class="admin-form-file">
+                {{ form.image }}
+            </div>
+            {% if project.image %}
+            <div class="admin-image-preview">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+            </div>
+            {% endif %}
+        </div>
+        
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="admin-btn admin-btn-primary">
+                <i class="fas fa-save"></i> Salvar Projeto
+            </button>
+            <a href="{% url 'portfoly:admin_projects_list' %}" class="admin-btn admin-btn-secondary">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

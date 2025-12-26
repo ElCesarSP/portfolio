@@ -1,0 +1,91 @@
+{% extends 'portfoly/page_admin/base_admin.html' %}
+
+{% block title %}Projetos{% endblock %}
+{% block page_title %}Gerenciar Projetos{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2 class="admin-page-title">Projetos</h2>
+    <a href="{% url 'portfoly:admin_project_create' %}" class="admin-btn admin-btn-primary">
+        <i class="fas fa-plus"></i> Novo Projeto
+    </a>
+</div>
+
+<!-- Search and Filters -->
+<div class="admin-card" style="margin-bottom: 2rem;">
+    <form method="get" class="admin-table-header">
+        <div class="admin-search-box">
+            <i class="fas fa-search admin-search-icon"></i>
+            <input type="text" name="search" placeholder="Buscar projetos..." value="{{ search }}" class="form-control">
+        </div>
+        <select name="category" class="admin-form-select" style="max-width: 200px;" onchange="this.form.submit()">
+            <option value="">Todas Categorias</option>
+            <option value="Mobile" {% if category == 'Mobile' %}selected{% endif %}>Mobile</option>
+            <option value="Web" {% if category == 'Web' %}selected{% endif %}>Web</option>
+            <option value="Desktop" {% if category == 'Desktop' %}selected{% endif %}>Desktop</option>
+            <option value="Android" {% if category == 'Android' %}selected{% endif %}>Android</option>
+            <option value="iOS" {% if category == 'iOS' %}selected{% endif %}>iOS</option>
+            <option value="Game" {% if category == 'Game' %}selected{% endif %}>Game</option>
+            <option value="IA" {% if category == 'IA' %}selected{% endif %}>IA</option>
+        </select>
+        <button type="submit" class="admin-btn admin-btn-secondary">
+            <i class="fas fa-filter"></i> Filtrar
+        </button>
+    </form>
+</div>
+
+<!-- Projects Table -->
+<div class="admin-card">
+    {% if projects %}
+    <div class="admin-table-container">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Categoria</th>
+                    <th>Tecnologias</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td>
+                        <strong>{{ project.title }}</strong>
+                        {% if project.description %}
+                        <br><small style="color: var(--admin-text-muted);">{{ project.description|truncatewords:10 }}</small>
+                        {% endif %}
+                    </td>
+                    <td><span class="admin-badge admin-badge-info">{{ project.category }}</span></td>
+                    <td>{{ project.technologies }}</td>
+                    <td>{{ project.created_at|date:"d/m/Y" }}</td>
+                    <td>
+                        <div class="admin-table-actions">
+                            <a href="{% url 'portfoly:admin_project_detail' project.pk %}" class="admin-btn admin-btn-sm admin-btn-primary" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{% url 'portfoly:admin_project_edit' project.pk %}" class="admin-btn admin-btn-sm admin-btn-secondary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="{% url 'portfoly:admin_project_delete' project.pk %}" class="admin-btn admin-btn-sm admin-btn-danger" title="Deletar">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="admin-table-empty">
+        <i class="fas fa-folder-open" style="font-size: 3rem; opacity: 0.3; margin-bottom: 1rem;"></i>
+        <p>Nenhum projeto encontrado.</p>
+        <a href="{% url 'portfoly:admin_project_create' %}" class="admin-btn admin-btn-primary" style="margin-top: 1rem;">
+            <i class="fas fa-plus"></i> Criar Primeiro Projeto
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

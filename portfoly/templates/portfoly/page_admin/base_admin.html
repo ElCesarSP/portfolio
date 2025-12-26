@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel{% endblock %} - Portfolio</title>
+    
+    <!-- Google Fonts - Montserrat + Poppins (same as home) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Admin CSS - Separated Files -->
+    <link rel="stylesheet" href="{% static 'global/css/admin/base.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/components.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/tables.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/layout.css' %}">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX'); // Substitua pelo seu ID do Google Analytics
+    </script>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="admin-container" data-theme="dark">
+    
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-header">
+            <div class="admin-sidebar-logo">
+                <i class="fas fa-bolt"></i> Admin Panel
+            </div>
+        </div>
+        
+        <nav>
+            <ul class="admin-sidebar-nav">
+                <li class="admin-sidebar-nav-item">
+                    <a href="{% url 'portfoly:admin_dashboard' %}" class="admin-sidebar-nav-link">
+                        <i class="fas fa-home admin-sidebar-nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="admin-sidebar-nav-item">
+                    <a href="{% url 'portfoly:admin_projects_list' %}" class="admin-sidebar-nav-link">
+                        <i class="fas fa-folder admin-sidebar-nav-icon"></i>
+                        <span>Projetos</span>
+                    </a>
+                </li>
+                <li class="admin-sidebar-nav-item">
+                    <a href="{% url 'portfoly:admin_experiments_list' %}" class="admin-sidebar-nav-link">
+                        <i class="fas fa-briefcase admin-sidebar-nav-icon"></i>
+                        <span>Experiências</span>
+                    </a>
+                </li>
+                <li class="admin-sidebar-nav-item">
+                    <a href="{% url 'portfoly:admin_skills_list' %}" class="admin-sidebar-nav-link">
+                        <i class="fas fa-star admin-sidebar-nav-icon"></i>
+                        <span>Habilidades</span>
+                    </a>
+                </li>
+                <li class="admin-sidebar-nav-item">
+                    <a href="{% url 'portfoly:admin_contacts_list' %}" class="admin-sidebar-nav-link">
+                        <i class="fas fa-envelope admin-sidebar-nav-icon"></i>
+                        <span>Mensagens</span>
+                    </a>
+                </li>
+                <li class="admin-sidebar-nav-item">
+                    <a href="#" class="admin-sidebar-nav-link">
+                        <i class="fas fa-comments admin-sidebar-nav-icon"></i>
+                        <span>Conversas do Chat</span>
+                    </a>
+                </li>
+                <li class="admin-sidebar-nav-item">
+                    <a href="{% url 'portfoly:admin_profile' %}" class="admin-sidebar-nav-link">
+                        <i class="fas fa-user admin-sidebar-nav-icon"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- Mobile Sidebar Toggle -->
+    <button class="admin-sidebar-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Navbar -->
+    <header class="admin-navbar">
+        <h1 class="admin-navbar-title">{% block page_title %}Dashboard{% endblock %}</h1>
+        
+        <div class="admin-navbar-user">
+            <div class="admin-navbar-user-info">
+                <div class="admin-navbar-user-name">{{ user.name }}</div>
+                <div class="admin-navbar-user-role">Administrador</div>
+            </div>
+            <div class="admin-navbar-user-avatar">
+                {{ user.name|first|upper }}
+            </div>
+            
+            <!-- Theme Toggle -->
+            <button class="admin-theme-toggle" id="themeToggle" title="Alternar tema">
+                <i class="fas fa-moon theme-icon-dark"></i>
+                <i class="fas fa-sun theme-icon-light"></i>
+            </button>
+            
+            <a href="{% url 'portfoly:admin_logout' %}" class="admin-navbar-logout">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </a>
+        </div>
+    </header>
+    
+    <!-- Messages -->
+    {% if messages %}
+    <div class="admin-messages">
+        {% for message in messages %}
+        <div class="admin-alert admin-alert-{{ message.tags }}">
+            <i class="fas fa-{% if message.tags == 'success' %}check-circle{% elif message.tags == 'error' %}exclamation-circle{% elif message.tags == 'warning' %}exclamation-triangle{% else %}info-circle{% endif %}"></i>
+            <span>{{ message }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    
+    <!-- Admin JavaScript -->
+    <script src="{% static 'global/js/admin.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

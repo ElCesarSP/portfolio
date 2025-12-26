@@ -1,0 +1,37 @@
+{% extends 'portfoly/page_admin/base_admin.html' %}
+{% block title %}{{ action }} Experiência{% endblock %}
+{% block page_title %}{{ action }} Experiência{% endblock %}
+{% block content %}
+<div class="admin-page-header">
+    <h2 class="admin-page-title">{{ action }} Experiência</h2>
+    <a href="{% url 'portfoly:admin_experiments_list' %}" class="admin-btn admin-btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
+</div>
+<div class="admin-card">
+    <form method="post" class="admin-form">
+        {% csrf_token %}
+        <div class="admin-grid admin-grid-2">
+            <div class="admin-form-group">
+                <label for="{{ form.position.id_for_label }}" class="admin-form-label">Posição *</label>
+                {{ form.position }}
+            </div>
+            <div class="admin-form-group">
+                <label for="{{ form.company.id_for_label }}" class="admin-form-label">Empresa</label>
+                {{ form.company }}
+            </div>
+        </div>
+        <div class="admin-form-group">
+            <label for="{{ form.description.id_for_label }}" class="admin-form-label">Descrição</label>
+            {{ form.description }}
+        </div>
+        <div class="admin-form-group">
+            <label for="{{ form.range_time.id_for_label }}" class="admin-form-label">Período</label>
+            {{ form.range_time }}
+            <small class="admin-form-help">Ex: Janeiro 2020 - Dezembro 2022</small>
+        </div>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="admin-btn admin-btn-primary"><i class="fas fa-save"></i> Salvar</button>
+            <a href="{% url 'portfoly:admin_experiments_list' %}" class="admin-btn admin-btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

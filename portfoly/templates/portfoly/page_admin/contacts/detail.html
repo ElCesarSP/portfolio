@@ -1,0 +1,88 @@
+{% extends 'portfoly/page_admin/base_admin.html' %}
+
+{% block title %}Detalhes da Mensagem{% endblock %}
+{% block page_title %}Detalhes da Mensagem{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2 class="admin-page-title">Detalhes da Mensagem</h2>
+    <a href="{% url 'portfoly:admin_contacts_list' %}" class="admin-btn admin-btn-secondary">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+</div>
+
+<div class="admin-card">
+    <div class="admin-card-header" style="border-bottom: 1px solid var(--admin-border-color); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: start; gap: 2rem;">
+            <div style="flex: 1;">
+                <h3 class="admin-card-title" style="margin-bottom: 0.5rem;">
+                    <i class="fas fa-envelope"></i> {{ contact.subject }}
+                </h3>
+                <div style="display: flex; gap: 1rem; color: var(--admin-text-muted); font-size: 0.9rem;">
+                    <span><i class="fas fa-calendar"></i> {{ contact.created_at|date:"d/m/Y H:i" }}</span>
+                    <span>
+                        {% if contact.read %}
+                        <span class="admin-badge admin-badge-success">Lida</span>
+                        {% else %}
+                        <span class="admin-badge admin-badge-warning">Não Lida</span>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 0.5rem; flex-shrink: 0; margin-left: auto;">
+                {% if contact.read %}
+                <a href="{% url 'portfoly:admin_contact_mark_unread' contact.pk %}" class="admin-btn admin-btn-warning">
+                    <i class="fas fa-envelope"></i> Marcar como Não Lida
+                </a>
+                {% else %}
+                <a href="{% url 'portfoly:admin_contact_mark_read' contact.pk %}" class="admin-btn admin-btn-success">
+                    <i class="fas fa-envelope-open"></i> Marcar como Lida
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="admin-card-body">
+        <!-- Informações do Remetente -->
+        <div style="background: var(--admin-bg-tertiary); padding: 1.5rem; border-radius: var(--admin-border-radius); margin-bottom: 2rem;">
+            <h4 style="margin-bottom: 1rem; color: var(--admin-text-primary); font-size: 1rem; font-weight: 600;">
+                <i class="fas fa-user"></i> Informações do Remetente
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <div>
+                    <label style="display: block; font-size: 0.875rem; color: var(--admin-text-muted); margin-bottom: 0.25rem;">Nome:</label>
+                    <strong style="color: var(--admin-text-primary);">{{ contact.name }}</strong>
+                </div>
+                <div>
+                    <label style="display: block; font-size: 0.875rem; color: var(--admin-text-muted); margin-bottom: 0.25rem;">Email:</label>
+                    <a href="mailto:{{ contact.email }}" style="color: var(--admin-primary); text-decoration: none;">
+                        <i class="fas fa-envelope"></i> {{ contact.email }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mensagem Completa -->
+        <div>
+            <h4 style="margin-bottom: 1rem; color: var(--admin-text-primary); font-size: 1rem; font-weight: 600;">
+                <i class="fas fa-comment-dots"></i> Mensagem Completa
+            </h4>
+            <div style="background: var(--admin-bg-main); border: 1px solid var(--admin-border-color); border-radius: var(--admin-border-radius); padding: 1.5rem; line-height: 1.8; white-space: pre-wrap; word-wrap: break-word;">
+                {{ contact.message }}
+            </div>
+        </div>
+        
+        <!-- Ações -->
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--admin-border-color); display: flex; gap: 1rem;">
+            <a href="mailto:{{ contact.email }}?subject=Re: {{ contact.subject }}" class="admin-btn admin-btn-primary">
+                <i class="fas fa-reply"></i> Responder por Email
+            </a>
+            <a href="{% url 'portfoly:admin_contacts_list' %}" class="admin-btn admin-btn-secondary">
+                <i class="fas fa-list"></i> Voltar para Lista
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

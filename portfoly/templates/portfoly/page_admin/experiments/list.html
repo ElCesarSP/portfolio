@@ -1,0 +1,50 @@
+{% extends 'portfoly/page_admin/base_admin.html' %}
+{% block title %}Experiências{% endblock %}
+{% block page_title %}Gerenciar Experiências{% endblock %}
+{% block content %}
+<div class="admin-page-header">
+    <h2 class="admin-page-title">Experiências Profissionais</h2>
+    <a href="{% url 'portfoly:admin_experiment_create' %}" class="admin-btn admin-btn-primary"><i class="fas fa-plus"></i> Nova Experiência</a>
+</div>
+<div class="admin-card" style="margin-bottom: 2rem;">
+    <form method="get" class="admin-table-header">
+        <div class="admin-search-box">
+            <i class="fas fa-search admin-search-icon"></i>
+            <input type="text" name="search" placeholder="Buscar experiências..." value="{{ search }}" class="form-control">
+        </div>
+        <button type="submit" class="admin-btn admin-btn-secondary"><i class="fas fa-search"></i> Buscar</button>
+    </form>
+</div>
+<div class="admin-card">
+    {% if experiments %}
+    <div class="admin-table-container">
+        <table class="admin-table">
+            <thead><tr><th>Posição</th><th>Empresa</th><th>Período</th><th>Data</th><th>Ações</th></tr></thead>
+            <tbody>
+                {% for exp in experiments %}
+                <tr>
+                    <td><strong>{{ exp.position }}</strong></td>
+                    <td>{{ exp.company|default:"—" }}</td>
+                    <td>{{ exp.range_time|default:"—" }}</td>
+                    <td>{{ exp.created_at|date:"d/m/Y" }}</td>
+                    <td>
+                        <div class="admin-table-actions">
+                            <a href="{% url 'portfoly:admin_experiment_detail' exp.pk %}" class="admin-btn admin-btn-sm admin-btn-primary" title="Ver Detalhes"><i class="fas fa-eye"></i></a>
+                            <a href="{% url 'portfoly:admin_experiment_edit' exp.pk %}" class="admin-btn admin-btn-sm admin-btn-secondary" title="Editar"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'portfoly:admin_experiment_delete' exp.pk %}" class="admin-btn admin-btn-sm admin-btn-danger" title="Deletar"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="admin-table-empty">
+        <i class="fas fa-briefcase" style="font-size: 3rem; opacity: 0.3; margin-bottom: 1rem;"></i>
+        <p>Nenhuma experiência encontrada.</p>
+        <a href="{% url 'portfoly:admin_experiment_create' %}" class="admin-btn admin-btn-primary" style="margin-top: 1rem;"><i class="fas fa-plus"></i> Criar Primeira Experiência</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

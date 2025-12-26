@@ -1,0 +1,135 @@
+/* ============================================
+   ADMIN - NAVBAR E HEADER
+   ============================================ */
+
+.admin-navbar {
+    position: fixed;
+    top: 0;
+    left: 280px;
+    right: 0;
+    height: 70px;
+    background: var(--admin-bg-secondary);
+    border-bottom: 1px solid var(--admin-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--admin-spacing-lg);
+    z-index: 999;
+    transition: var(--admin-transition);
+}
+
+.admin-navbar-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.admin-navbar-user {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+}
+
+.admin-navbar-user-info {
+    text-align: right;
+}
+
+.admin-navbar-user-name {
+    font-weight: 600;
+    color: var(--admin-text-primary);
+}
+
+.admin-navbar-user-role {
+    font-size: 0.875rem;
+    color: var(--admin-text-muted);
+}
+
+.admin-navbar-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--admin-primary), var(--admin-primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.admin-navbar-logout {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--admin-error);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: var(--admin-spacing-xs) var(--admin-spacing-md);
+    border-radius: var(--admin-border-radius-sm);
+    text-decoration: none;
+    transition: var(--admin-transition-fast);
+    font-weight: 500;
+}
+
+.admin-navbar-logout:hover {
+    background: var(--admin-error);
+    color: white;
+}
+
+/* Theme Toggle Button */
+.admin-theme-toggle {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    background: rgba(107, 44, 145, 0.1);
+    border: 2px solid rgba(107, 44, 145, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--admin-transition);
+    margin-right: var(--admin-spacing-sm);
+}
+
+.admin-theme-toggle:hover {
+    background: rgba(107, 44, 145, 0.2);
+    border-color: var(--admin-primary);
+    transform: rotate(15deg);
+}
+
+.admin-theme-toggle i {
+    position: absolute;
+    font-size: 1.1rem;
+    transition: var(--admin-transition);
+}
+
+.theme-icon-dark {
+    color: var(--admin-primary-light);
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.theme-icon-light {
+    color: var(--admin-accent);
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+}
+
+/* Light theme icon states */
+[data-theme="light"] .theme-icon-dark {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+}
+
+[data-theme="light"] .theme-icon-light {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+[data-theme="light"] .admin-theme-toggle {
+    background: rgba(107, 44, 145, 0.05);
+    border-color: rgba(107, 44, 145, 0.15);
+}
+
+@media (max-width: 768px) {
+    .admin-navbar {
+        left: 0;
+        padding-left: 70px;
+    }
+}

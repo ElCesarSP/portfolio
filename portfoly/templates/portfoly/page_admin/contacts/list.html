@@ -1,0 +1,70 @@
+{% extends 'portfoly/page_admin/base_admin.html' %}
+{% block title %}Mensagens de Contato{% endblock %}
+{% block page_title %}Mensagens de Contato{% endblock %}
+{% block content %}
+<div class="admin-page-header">
+    <h2 class="admin-page-title">Mensagens de Contato</h2>
+</div>
+<div class="admin-card" style="margin-bottom: 2rem;">
+    <form method="get" class="admin-table-header">
+        <div class="admin-search-box">
+            <i class="fas fa-search admin-search-icon"></i>
+            <input type="text" name="search" placeholder="Buscar mensagens..." value="{{ search }}" class="form-control">
+        </div>
+        <select name="filter" class="admin-form-select" style="max-width: 200px;" onchange="this.form.submit()">
+            <option value="all" {% if filter_type == 'all' %}selected{% endif %}>Todas</option>
+            <option value="unread" {% if filter_type == 'unread' %}selected{% endif %}>Não Lidas</option>
+            <option value="read" {% if filter_type == 'read' %}selected{% endif %}>Lidas</option>
+        </select>
+        <button type="submit" class="admin-btn admin-btn-secondary"><i class="fas fa-filter"></i> Filtrar</button>
+    </form>
+</div>
+<div class="admin-card">
+    {% if contacts %}
+    <div class="admin-table-container">
+        <table class="admin-table">
+            <thead><tr><th>Nome</th><th>Email</th><th>Assunto</th><th>Mensagem</th><th>Data</th><th>Status</th><th>Ações</th></tr></thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr style="{% if not contact.read %}background: rgba(99, 102, 241, 0.05);{% endif %} cursor: pointer;" onclick="window.location='{% url 'portfoly:admin_contact_detail' contact.pk %}'">
+                    <td><strong>{{ contact.name }}</strong></td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.subject }}</td>
+                    <td>
+                        <div style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                            {{ contact.message|truncatewords:10 }}
+                        </div>
+                    </td>
+                    <td>{{ contact.created_at|date:"d/m/Y H:i" }}</td>
+                    <td>
+                        {% if contact.read %}
+                        <span class="admin-badge admin-badge-success">Lida</span>
+                        {% else %}
+                        <span class="admin-badge admin-badge-warning">Não Lida</span>
+                        {% endif %}
+                    </td>
+                    <td onclick="event.stopPropagation();">
+                        <div class="admin-table-actions">
+                            <a href="{% url 'portfoly:admin_contact_detail' contact.pk %}" class="admin-btn admin-btn-sm admin-btn-primary" title="Ver detalhes">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            {% if contact.read %}
+                            <a href="{% url 'portfoly:admin_contact_mark_unread' contact.pk %}" class="admin-btn admin-btn-sm admin-btn-warning" title="Marcar como não lida"><i class="fas fa-envelope"></i></a>
+                            {% else %}
+                            <a href="{% url 'portfoly:admin_contact_mark_read' contact.pk %}" class="admin-btn admin-btn-sm admin-btn-success" title="Marcar como lida"><i class="fas fa-envelope-open"></i></a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="admin-table-empty">
+        <i class="fas fa-envelope" style="font-size: 3rem; opacity: 0.3; margin-bottom: 1rem;"></i>
+        <p>Nenhuma mensagem encontrada.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

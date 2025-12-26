@@ -1,0 +1,28 @@
+{% extends 'portfoly/page_admin/base_admin.html' %}
+{% block title %}{{ action }} Habilidade{% endblock %}
+{% block page_title %}{{ action }} Habilidade{% endblock %}
+{% block content %}
+<div class="admin-page-header">
+    <h2 class="admin-page-title">{{ action }} Habilidade</h2>
+    <a href="{% url 'portfoly:admin_skills_list' %}" class="admin-btn admin-btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
+</div>
+<div class="admin-card">
+    <form method="post" class="admin-form">
+        {% csrf_token %}
+        <div class="admin-grid admin-grid-2">
+            <div class="admin-form-group">
+                <label for="{{ form.name.id_for_label }}" class="admin-form-label">Nome *</label>
+                {{ form.name }}
+            </div>
+            <div class="admin-form-group">
+                <label for="{{ form.level.id_for_label }}" class="admin-form-label">Nível</label>
+                {{ form.level }}
+            </div>
+        </div>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="admin-btn admin-btn-primary"><i class="fas fa-save"></i> Salvar</button>
+            <a href="{% url 'portfoly:admin_skills_list' %}" class="admin-btn admin-btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
