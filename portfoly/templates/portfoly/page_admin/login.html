@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Admin Panel</title>
+    
+    <!-- Google Fonts - Montserrat + Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="{% static 'global/css/admin/base.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/login.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/admin/layout.css' %}">
+</head>
+<body>
+    <!-- Messages -->
+    {% if messages %}
+    <div class="admin-messages" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+        {% for message in messages %}
+        <div class="admin-alert admin-alert-{{ message.tags }}" style="margin-bottom: 10px; min-width: 300px;">
+            <i class="fas fa-{% if message.tags == 'success' %}check-circle{% elif message.tags == 'error' %}exclamation-circle{% else %}info-circle{% endif %}"></i>
+            <span>{{ message }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="admin-login-container">
+        <!-- LEFT PANEL - PURPLE ACRYLIC -->
+        <div class="admin-login-left">
+            <!-- Geometric Shapes Background -->
+            <div class="geo-shapes">
+                <!-- Diagonal Lines -->
+                <div class="diagonal-line"></div>
+                <div class="diagonal-line"></div>
+                <div class="diagonal-line"></div>
+                <div class="diagonal-line"></div>
+                
+                <!-- Hexagon Grid -->
+                <div class="hex-grid"></div>
+                
+                <!-- Corner Accents -->
+                <div class="corner-accent top-left"></div>
+                <div class="corner-accent bottom-right"></div>
+                
+                <!-- Plus Icons -->
+                <i class="fas fa-plus plus-icon"></i>
+                <i class="fas fa-plus plus-icon"></i>
+                
+                <!-- Circle Icons -->
+                <div class="circle-icon"></div>
+                <div class="circle-icon"></div>
+                
+                <!-- Dots Grid -->
+                <div class="dots-grid">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                
+                <!-- Wavy Lines -->
+                <div class="wavy-lines">
+                    <svg width="100" height="200" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 0 Q 20 50 10 100 Q 0 150 10 200" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+                        <path d="M30 0 Q 40 50 30 100 Q 20 150 30 200" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+                        <path d="M50 0 Q 60 50 50 100 Q 40 150 50 200" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Welcome Content -->
+            <div class="welcome-content">
+                <div class="welcome-badge">
+                    <div class="badge-line"></div>
+                    <span class="badge-text">ADMIN PANEL</span>
+                </div>
+                
+                <h1 class="welcome-title">Bem-vindo<br>de<br>volta!</h1>
+                
+                <p class="welcome-subtitle">
+                    Você pode entrar com sua conta existente para acessar.
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL - WHITE FORM -->
+        <div class="admin-login-right">
+            <div class="admin-login-form-container">
+                <h2 class="login-form-title">Entrar</h2>
+                
+                <form method="post" class="admin-login-form">
+                    {% csrf_token %}
+                    
+                    <!-- Email Input -->
+                    <div class="admin-form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                class="form-control" 
+                                placeholder="Username or email"
+                                required
+                                value="{{ form.email.value|default:'' }}"
+                            >
+                        </div>
+                    </div>
+                    
+                    <!-- Password Input -->
+                    <div class="admin-form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                class="form-control" 
+                                placeholder="Password"
+                                required
+                            >
+                        </div>
+                    </div>
+                    
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="remember-row">
+                        <div class="remember-checkbox">
+                            <input type="checkbox" name="remember_me" id="remember_me">
+                            <label for="remember_me">Lembrar-me</label>
+                        </div>
+                        <a href="{% url 'portfoly:password_reset_request' %}" class="forgot-link">
+                            Esqueceu a senha?
+                        </a>
+                    </div>
+                    
+                    <!-- Login Button -->
+                    <button type="submit" class="login-btn">
+                        Sign In
+                    </button>
+                    
+                    <!-- New User Link -->
+                    <p class="new-user-text">
+                        New here? <a href="#">Crie uma conta</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'global/js/admin.js' %}"></script>
+</body>
+</html>

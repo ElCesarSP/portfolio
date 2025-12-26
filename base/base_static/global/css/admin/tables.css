@@ -1,0 +1,96 @@
+/* ============================================
+   ADMIN - TABELAS
+   ============================================ */
+
+.admin-table-container {
+    overflow-x: auto;
+    border-radius: var(--admin-border-radius);
+    border: 1px solid var(--admin-border-color);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--admin-bg-card);
+}
+
+.admin-table thead {
+    background: var(--admin-bg-tertiary);
+}
+
+.admin-table th {
+    padding: var(--admin-spacing-md);
+    text-align: left;
+    font-weight: 600;
+    color: var(--admin-text-primary);
+    border-bottom: 2px solid var(--admin-border-color);
+    white-space: nowrap;
+}
+
+.admin-table td {
+    padding: var(--admin-spacing-md);
+    border-bottom: 1px solid var(--admin-border-color);
+    color: var(--admin-text-secondary);
+}
+
+.admin-table tbody tr {
+    transition: var(--admin-transition-fast);
+}
+
+.admin-table tbody tr:hover {
+    background: var(--admin-bg-tertiary);
+}
+
+.admin-table tbody tr[style*="cursor: pointer"]:hover {
+    background: rgba(107, 44, 145, 0.08) !important;
+    transform: scale(1.001);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table-actions {
+    display: flex;
+    gap: var(--admin-spacing-sm);
+}
+
+.admin-table-empty {
+    padding: var(--admin-spacing-xl);
+    text-align: center;
+    color: var(--admin-text-muted);
+}
+
+/* Search and Filters */
+.admin-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--admin-spacing-md);
+    margin-bottom: var(--admin-spacing-lg);
+    flex-wrap: wrap;
+}
+
+.admin-search-box {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.admin-search-box input {
+    width: 100%;
+    padding: var(--admin-spacing-sm) var(--admin-spacing-sm) var(--admin-spacing-sm) 2.5rem;
+    background: var(--admin-bg-tertiary);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-border-radius-sm);
+    color: var(--admin-text-primary);
+}
+
+.admin-search-icon {
+    position: absolute;
+    left: var(--admin-spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--admin-text-muted);
+}

@@ -1,0 +1,114 @@
+/* ============================================
+   ADMIN - LAYOUT E ESTRUTURA
+   ============================================ */
+
+.admin-main {
+    margin-left: 280px;
+    margin-top: 70px;
+    padding: var(--admin-spacing-lg);
+    min-height: calc(100vh - 70px);
+}
+
+.admin-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.admin-page-header {
+    margin-bottom: var(--admin-spacing-xl);
+}
+
+.admin-page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--admin-spacing-xs);
+}
+
+.admin-page-subtitle {
+    color: var(--admin-text-muted);
+    font-size: 1.125rem;
+}
+
+.admin-grid {
+    display: grid;
+    gap: var(--admin-spacing-lg);
+}
+
+.admin-grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.admin-grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.admin-grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Messages/Alerts */
+.admin-messages {
+    position: fixed;
+    top: 90px;
+    right: var(--admin-spacing-lg);
+    z-index: 9999;
+    max-width: 400px;
+}
+
+.admin-alert {
+    padding: var(--admin-spacing-md);
+    border-radius: var(--admin-border-radius-sm);
+    margin-bottom: var(--admin-spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+    box-shadow: var(--admin-shadow-lg);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.admin-alert-success {
+    background: rgba(16, 185, 129, 0.15);
+    border-left: 4px solid var(--admin-success);
+    color: var(--admin-success);
+}
+
+.admin-alert-error {
+    background: rgba(239, 68, 68, 0.15);
+    border-left: 4px solid var(--admin-error);
+    color: var(--admin-error);
+}
+
+.admin-alert-warning {
+    background: rgba(245, 158, 11, 0.15);
+    border-left: 4px solid var(--admin-warning);
+    color: var(--admin-warning);
+}
+
+.admin-alert-info {
+    background: rgba(59, 130, 246, 0.15);
+    border-left: 4px solid var(--admin-info);
+    color: var(--admin-info);
+}
+
+@media (max-width: 768px) {
+    .admin-main {
+        margin-left: 0;
+    }
+    
+    .admin-messages {
+        left: var(--admin-spacing-md);
+        right: var(--admin-spacing-md);
+        max-width: none;
+    }
+}

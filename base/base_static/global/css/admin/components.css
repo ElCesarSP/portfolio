@@ -1,0 +1,110 @@
+/* ============================================
+   ADMIN - CARDS E COMPONENTES
+   ============================================ */
+
+.admin-card {
+    background: var(--admin-bg-card);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-border-radius);
+    padding: var(--admin-spacing-lg);
+    box-shadow: var(--admin-shadow);
+    transition: var(--admin-transition-fast);
+}
+
+.admin-card:hover {
+    box-shadow: var(--admin-shadow-lg);
+    transform: translateY(-2px);
+    border-color: var(--admin-primary);
+}
+
+.admin-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--admin-spacing-md);
+    padding-bottom: var(--admin-spacing-md);
+    border-bottom: 1px solid var(--admin-border-color);
+}
+
+.admin-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.admin-card-body {
+    color: var(--admin-text-secondary);
+}
+
+/* Stats Card */
+.admin-stats-card {
+    background: linear-gradient(135deg, var(--admin-bg-card), var(--admin-bg-secondary));
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-border-radius);
+    padding: var(--admin-spacing-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--admin-gradient-purple-red);
+}
+
+.admin-stats-label {
+    font-size: 0.875rem;
+    color: var(--admin-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--admin-spacing-xs);
+}
+
+.admin-stats-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--admin-text-primary);
+    line-height: 1;
+}
+
+.admin-stats-icon {
+    position: absolute;
+    top: var(--admin-spacing-md);
+    right: var(--admin-spacing-md);
+    font-size: 3rem;
+    opacity: 0.1;
+}
+
+/* Badge */
+.admin-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.admin-badge-success {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--admin-success);
+}
+
+.admin-badge-warning {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--admin-warning);
+}
+
+.admin-badge-error {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--admin-error);
+}
+
+.admin-badge-info {
+    background: rgba(59, 130, 246, 0.2);
+    color: var(--admin-info);
+}

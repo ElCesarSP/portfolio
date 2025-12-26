@@ -1,0 +1,96 @@
+/* ============================================
+   ADMIN - FORMULÁRIOS
+   ============================================ */
+
+.admin-form {
+    max-width: 800px;
+}
+
+.admin-form-group {
+    margin-bottom: var(--admin-spacing-md);
+}
+
+.admin-form-label {
+    display: block;
+    margin-bottom: var(--admin-spacing-xs);
+    font-weight: 500;
+    color: var(--admin-text-primary);
+}
+
+.admin-form-control,
+.admin-form-select,
+.admin-form-textarea {
+    width: 100%;
+    padding: var(--admin-spacing-sm);
+    background: var(--admin-bg-tertiary);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-border-radius-sm);
+    color: var(--admin-text-primary);
+    font-size: 1rem;
+    transition: var(--admin-transition-fast);
+}
+
+.admin-form-control:focus,
+.admin-form-select:focus,
+.admin-form-textarea:focus {
+    outline: none;
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.admin-form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.admin-form-file {
+    padding: var(--admin-spacing-md);
+    background: var(--admin-bg-tertiary);
+    border: 2px dashed var(--admin-border-color);
+    border-radius: var(--admin-border-radius-sm);
+    cursor: pointer;
+    transition: var(--admin-transition-fast);
+}
+
+.admin-form-file:hover {
+    border-color: var(--admin-primary);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.admin-form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+}
+
+.admin-form-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.admin-form-error {
+    color: var(--admin-error);
+    font-size: 0.875rem;
+    margin-top: var(--admin-spacing-xs);
+}
+
+.admin-form-help {
+    color: var(--admin-text-muted);
+    font-size: 0.875rem;
+    margin-top: var(--admin-spacing-xs);
+}
+
+/* Image Preview */
+.admin-image-preview {
+    margin-top: var(--admin-spacing-md);
+    max-width: 300px;
+    border-radius: var(--admin-border-radius-sm);
+    overflow: hidden;
+}
+
+.admin-image-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

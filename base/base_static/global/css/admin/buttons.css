@@ -1,0 +1,108 @@
+/* ============================================
+   ADMIN - BOTÕES
+   ============================================ */
+
+.admin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--admin-spacing-xs);
+    padding: var(--admin-spacing-sm) var(--admin-spacing-lg);
+    border: none;
+    border-radius: var(--admin-border-radius-sm);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--admin-transition-fast);
+    font-size: 0.9375rem;
+}
+
+.admin-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Primary Button - Red Accent */
+.admin-btn-primary {
+    background: var(--admin-gradient-red);
+    color: white;
+    box-shadow: var(--admin-shadow-red);
+}
+
+.admin-btn-primary:hover:not(:disabled) {
+    background: var(--admin-accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 0 60px rgba(230, 57, 70, 0.5);
+}
+
+/* Success Button */
+.admin-btn-success {
+    background: var(--admin-success);
+    color: white;
+}
+
+.admin-btn-success:hover:not(:disabled) {
+    background: #059669;
+    transform: translateY(-1px);
+    box-shadow: var(--admin-shadow);
+}
+
+/* Warning Button */
+.admin-btn-warning {
+    background: var(--admin-warning);
+    color: white;
+}
+
+.admin-btn-warning:hover:not(:disabled) {
+    background: #d97706;
+    transform: translateY(-1px);
+    box-shadow: var(--admin-shadow);
+}
+
+/* Danger Button */
+.admin-btn-danger {
+    background: var(--admin-error);
+    color: white;
+}
+
+.admin-btn-danger:hover:not(:disabled) {
+    background: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: var(--admin-shadow);
+}
+
+/* Secondary Button */
+.admin-btn-secondary {
+    background: var(--admin-bg-tertiary);
+    color: var(--admin-text-primary);
+    border: 1px solid var(--admin-border-color);
+}
+
+.admin-btn-secondary:hover:not(:disabled) {
+    background: #475569;
+    transform: translateY(-1px);
+}
+
+/* Outline Button */
+.admin-btn-outline {
+    background: transparent;
+    color: var(--admin-primary);
+    border: 1px solid var(--admin-primary);
+}
+
+.admin-btn-outline:hover:not(:disabled) {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* Small Button */
+.admin-btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* Icon Button */
+.admin-btn-icon {
+    padding: var(--admin-spacing-sm);
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+}

@@ -1,0 +1,121 @@
+/* ============================================
+   ADMIN - VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
+   TEMA: Purple + Red (mesmo do home)
+   ============================================ */
+
+:root {
+    /* Cores Principais - Purple + Red Theme */
+    --admin-primary: #6B2C91;           /* Deep Purple */
+    --admin-primary-dark: #4A1D66;      /* Darker Purple */
+    --admin-primary-light: #8B3FB8;     /* Brighter Purple */
+    --admin-accent: #E63946;            /* Vibrant Red */
+    --admin-accent-dark: #C1121F;       /* Dark Red */
+    
+    /* Cores de Fundo - Black Theme */
+    --admin-bg-main: #050505;           /* Deep Black */
+    --admin-bg-secondary: #0a0a0a;      /* Soft Black */
+    --admin-bg-tertiary: #1a1a1a;       /* Light Black */
+    --admin-bg-card: #0a0a0a;           /* Card Background */
+    
+    /* Cores de Texto */
+    --admin-text-primary: #FFFFFF;      /* White */
+    --admin-text-secondary: #EAEAEA;    /* Soft White */
+    --admin-text-muted: #B8B8B8;        /* Dim White */
+    
+    /* Cores de Status */
+    --admin-success: #10b981;
+    --admin-warning: #f59e0b;
+    --admin-error: #E63946;             /* Red */
+    --admin-info: #8B3FB8;              /* Purple */
+    
+    /* Bordas */
+    --admin-border-color: rgba(107, 44, 145, 0.25);  /* Purple border */
+    --admin-border-radius: 16px;
+    --admin-border-radius-sm: 8px;
+    
+    /* Sombras - Purple Glow */
+    --admin-shadow-sm: 0 0 20px rgba(107, 44, 145, 0.2);
+    --admin-shadow: 0 0 40px rgba(107, 44, 145, 0.3);
+    --admin-shadow-lg: 0 0 60px rgba(107, 44, 145, 0.4);
+    --admin-shadow-red: 0 0 40px rgba(230, 57, 70, 0.3);
+    
+    /* Gradientes - Purple + Red */
+    --admin-gradient-purple: linear-gradient(135deg, #6B2C91 0%, #4A1D66 100%);
+    --admin-gradient-purple-glow: linear-gradient(135deg, #8B3FB8 0%, #6B2C91 50%, #4A1D66 100%);
+    --admin-gradient-red: linear-gradient(135deg, #E63946 0%, #C1121F 100%);
+    --admin-gradient-purple-red: linear-gradient(135deg, #6B2C91 0%, #E63946 100%);
+    
+    /* Espaçamentos */
+    --admin-spacing-xs: 0.5rem;
+    --admin-spacing-sm: 1rem;
+    --admin-spacing-md: 1.5rem;
+    --admin-spacing-lg: 2rem;
+    --admin-spacing-xl: 3rem;
+    
+    /* Transições */
+    --admin-transition: all 0.5s ease;
+    --admin-transition-fast: all 0.2s ease;
+}
+
+/* === LIGHT THEME === */
+[data-theme="light"] {
+    /* Cores Principais - Purple + Red Theme (Light) */
+    --admin-primary: #6B2C91;
+    --admin-primary-dark: #4A1D66;
+    --admin-primary-light: #8B3FB8;
+    --admin-accent: #E63946;
+    --admin-accent-dark: #C1121F;
+    
+    /* Cores de Fundo - Light Theme */
+    --admin-bg-main: #F5F5F5;
+    --admin-bg-secondary: #FFFFFF;
+    --admin-bg-tertiary: #E8E8E8;
+    --admin-bg-card: #FFFFFF;
+    
+    /* Cores de Texto */
+    --admin-text-primary: #1a1a1a;
+    --admin-text-secondary: #2a2a2a;
+    --admin-text-muted: #4a4a4a;
+    
+    /* Bordas */
+    --admin-border-color: rgba(107, 44, 145, 0.15);
+    
+    /* Sombras - Lighter */
+    --admin-shadow-sm: 0 0 20px rgba(107, 44, 145, 0.1);
+    --admin-shadow: 0 0 40px rgba(107, 44, 145, 0.15);
+    --admin-shadow-lg: 0 0 60px rgba(107, 44, 145, 0.2);
+    --admin-shadow-red: 0 0 40px rgba(230, 57, 70, 0.15);
+}
+
+/* Reset e Base */
+.admin-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.admin-container {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--admin-bg-main);
+    color: var(--admin-text-primary);
+    min-height: 100vh;
+}
+
+/* Scrollbar Customizada - Purple Theme */
+.admin-container ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.admin-container ::-webkit-scrollbar-track {
+    background: var(--admin-bg-secondary);
+}
+
+.admin-container ::-webkit-scrollbar-thumb {
+    background: var(--admin-primary);
+    border-radius: 4px;
+}
+
+.admin-container ::-webkit-scrollbar-thumb:hover {
+    background: var(--admin-primary-light);
+}

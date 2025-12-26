@@ -1,0 +1,101 @@
+/* ============================================
+   ADMIN - SIDEBAR E NAVEGAÇÃO
+   ============================================ */
+
+.admin-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--admin-bg-secondary) 0%, var(--admin-bg-main) 100%);
+    border-right: 1px solid var(--admin-border-color);
+    padding: var(--admin-spacing-lg) 0;
+    overflow-y: auto;
+    transition: var(--admin-transition);
+    z-index: 1000;
+    box-shadow: var(--admin-shadow);
+}
+
+.admin-sidebar-header {
+    padding: 0 var(--admin-spacing-lg);
+    margin-bottom: var(--admin-spacing-xl);
+}
+
+.admin-sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--admin-gradient-purple-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.admin-sidebar-nav {
+    list-style: none;
+}
+
+.admin-sidebar-nav-item {
+    margin-bottom: var(--admin-spacing-xs);
+}
+
+.admin-sidebar-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+    padding: var(--admin-spacing-sm) var(--admin-spacing-lg);
+    color: var(--admin-text-secondary);
+    text-decoration: none;
+    transition: var(--admin-transition-fast);
+    border-left: 3px solid transparent;
+}
+
+.admin-sidebar-nav-link:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--admin-text-primary);
+    border-left-color: var(--admin-primary);
+}
+
+.admin-sidebar-nav-link.active {
+    background-color: rgba(99, 102, 241, 0.15);
+    color: var(--admin-primary-light);
+    border-left-color: var(--admin-primary);
+    font-weight: 600;
+}
+
+.admin-sidebar-nav-icon {
+    font-size: 1.25rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Mobile Toggle */
+.admin-sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: var(--admin-spacing-md);
+    left: var(--admin-spacing-md);
+    z-index: 1001;
+    background: var(--admin-primary);
+    color: white;
+    border: none;
+    padding: var(--admin-spacing-sm);
+    border-radius: var(--admin-border-radius-sm);
+    cursor: pointer;
+    box-shadow: var(--admin-shadow);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .admin-sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .admin-sidebar-toggle {
+        display: block;
+    }
+}
