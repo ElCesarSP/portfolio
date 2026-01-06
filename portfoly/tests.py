@@ -1,22 +1,19 @@
-from django.test import TestCase
-
-# Create your tests here.
 """
 TESTES DO PROJETO PORTFOLIO
 Testes unitários e de integração para models, views, forms e URLs
 """
 
-import hashlib
-from datetime import timedelta
-
-from django.test import Client, TestCase
+from django.test import TestCase, Client
 from django.urls import reverse
 from django.utils import timezone
-
+from datetime import timedelta
+from portfoly.models import (
+    User, UserDetails, Project, Experiment, Skill, 
+    Contact, AuthToken, ChatConversation, ChatMessage, ProjectInquiry
+)
 from portfoly.forms import ContactForm
-from portfoly.models import (AuthToken, ChatConversation, ChatMessage, Contact,
-                             Experiment, Project, ProjectInquiry, Skill, User,
-                             UserDetails)
+import hashlib
+
 
 # ============================================
 # TESTES DE MODELS

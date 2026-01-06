@@ -12,7 +12,7 @@ urlpatterns = [
     path("projects/", views.project, name="projects"),
     path("contact/", views.contact, name="contact"),        
 
-   # Admin authentication
+    # Admin authentication
     path("admin-panel/login/", views.admin_login, name="admin_login"),
     path("admin-panel/logout/", views.admin_logout, name="admin_logout"),
     path("admin-panel/password-reset-request/", views.password_reset_request, name="password_reset_request"),
@@ -51,4 +51,5 @@ urlpatterns = [
     # Profile
     path("admin-panel/profile/", views.admin_profile, name="admin_profile"),
     path("admin-panel/profile/change-password/", views.admin_change_password, name="admin_change_password"),
+
 ]
