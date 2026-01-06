@@ -1,11 +1,12 @@
 from django.contrib import admin
+from django.contrib.auth.hashers import make_password
 from . import models
 
 # Register your models here.
 
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "email", "password", "is_staff", "is_active", "created_at")
+    list_display = ("id", "name", "email", "password_display", "is_staff", "is_active", "created_at")
     ordering = ("-id",)
     list_filter = ["name", "email", "is_staff", "is_active"]
     search_fields = ["name", "email", "is_staff", "is_active"]
@@ -25,9 +26,10 @@ class UserAdmin(admin.ModelAdmin):
         return obj.email
     email.short_description = "Email"
 
-    def password(self, obj):
-        return obj.password
-    password.short_description = "Senha"
+    def password_display(self, obj):
+        """Exibe apenas um indicador de senha criptografada"""
+        return "••••••••" if obj.password else "Sem senha"
+    password_display.short_description = "Senha"
 
     def is_staff(self, obj):
         return obj.is_staff
@@ -39,7 +41,17 @@ class UserAdmin(admin.ModelAdmin):
 
     def created_at(self, obj):
         return obj.created_at
-    created_at.short_description = "Data de Criação"    
+    created_at.short_description = "Data de Criação"
+
+    def save_model(self, request, obj, form, change):
+        """Sobrescreve o método save_model para criptografar a senha"""
+        if 'password' in form.changed_data:
+            # Se a senha foi alterada, verifica se já está em hash
+            raw_password = form.cleaned_data.get('password')
+            if raw_password and not raw_password.startswith('pbkdf2'):
+                # Se não começa com pbkdf2_, é uma senha em texto plano
+                obj.password = make_password(raw_password)
+        super().save_model(request, obj, form, change) 
 
 @admin.register(models.UserDetails)
 class UserDetailsAdmin(admin.ModelAdmin):

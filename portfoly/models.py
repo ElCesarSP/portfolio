@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import check_password, make_password
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
@@ -51,7 +52,7 @@ class User(models.Model):
     id = models.AutoField("ID",primary_key=True)
     name = models.CharField("Nome",max_length=100)
     email = models.EmailField("Email")
-    password = models.CharField("Senha",max_length=100)
+    password = models.CharField("Senha",max_length=255)  # Aumentado para 255 para suportar hash
     is_staff = models.BooleanField("Staff",default=False)
     is_active = models.BooleanField("Ativo",default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -59,6 +60,14 @@ class User(models.Model):
 
     def __str__(self):
         return self.name   
+
+    def set_password(self, raw_password):
+        """Define a senha usando hash do Django"""
+        self.password = make_password(raw_password)
+        
+    def check_password(self, raw_password):
+        """Verifica se a senha está correta"""
+        return check_password(raw_password, self.password)
 
     class Meta:
         verbose_name = "Usuário Administrativo"

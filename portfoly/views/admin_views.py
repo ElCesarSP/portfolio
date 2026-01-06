@@ -9,14 +9,21 @@ from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 
-from portfoly.admin_forms import (ChangePasswordForm, ExperimentForm,
-                                  LoginForm, PasswordResetForm,
-                                  PasswordResetRequestForm, ProjectForm,
-                                  SkillForm, UserDetailsForm)
+from portfoly.admin_forms import (
+    ChangePasswordForm, ExperimentForm,
+    LoginForm, PasswordResetForm,
+    PasswordResetRequestForm, ProjectForm,
+    SkillForm, UserDetailsForm
+)
+
 from portfoly.decorators import admin_login_required, admin_required
-from portfoly.models import (AuthToken, ChatConversation, ChatMessage, Contact,
-                             Experiment, PasswordResetToken, Project,
-                             ProjectInquiry, Skill, User, UserDetails)
+
+from portfoly.models import (
+    AuthToken, ChatConversation, ChatMessage, Contact,
+    Experiment, PasswordResetToken, Project,
+    ProjectInquiry, Skill, User, UserDetails
+)
+
 
 # ============================================
 # AUTHENTICATION VIEWS
@@ -42,37 +49,39 @@ def admin_login(request):
             password = form.cleaned_data['password']
             remember_me = form.cleaned_data.get('remember_me', False)
             
-            # Hash da senha para comparação
-            password_hash = hashlib.sha256(password.encode()).hexdigest()
-            
             try:
-                user = User.objects.get(email=email, password=password, is_active=True)
+                # Busca o usuário pelo email
+                user = User.objects.get(email=email, is_active=True)
                 
-                # Criar token de autenticação
-                token_value = secrets.token_urlsafe(32)
-                
-                # Definir tempo de expiração
-                if remember_me:
-                    expires_at = timezone.now() + timedelta(days=30)
+                # Verifica a senha usando o método check_password
+                if user.check_password(password):
+                    # Criar token de autenticação
+                    token_value = secrets.token_urlsafe(32)
+                    
+                    # Definir tempo de expiração
+                    if remember_me:
+                        expires_at = timezone.now() + timedelta(days=30)
+                    else:
+                        expires_at = timezone.now() + timedelta(hours=12)
+                    
+                    # Criar token no banco
+                    token = AuthToken.objects.create(
+                        user=user,
+                        token=token_value,
+                        expires_at=expires_at,
+                        remember_me=remember_me
+                    )
+                    
+                    messages.success(request, f'Bem-vindo, {user.name}!')
+                    response = redirect('portfoly:admin_dashboard')
+                    
+                    # Definir cookie
+                    max_age = 30 * 24 * 60 * 60 if remember_me else 12 * 60 * 60
+                    response.set_cookie('admin_token', token_value, max_age=max_age, httponly=True)
+                    
+                    return response
                 else:
-                    expires_at = timezone.now() + timedelta(hours=12)
-                
-                # Criar token no banco
-                token = AuthToken.objects.create(
-                    user=user,
-                    token=token_value,
-                    expires_at=expires_at,
-                    remember_me=remember_me
-                )
-                
-                messages.success(request, f'Bem-vindo, {user.name}!')
-                response = redirect('portfoly:admin_dashboard')
-                
-                # Definir cookie
-                max_age = 30 * 24 * 60 * 60 if remember_me else 12 * 60 * 60
-                response.set_cookie('admin_token', token_value, max_age=max_age, httponly=True)
-                
-                return response
+                    messages.error(request, 'Email ou senha incorretos.')
                 
             except User.DoesNotExist:
                 messages.error(request, 'Email ou senha incorretos.')
@@ -80,7 +89,6 @@ def admin_login(request):
         form = LoginForm()
     
     return render(request, 'portfoly/page_admin/login.html', {'form': form})
-
 
 
 def admin_logout(request):
